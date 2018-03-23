@@ -16,6 +16,8 @@ OPEN_XLSX_TITLE = "LOG ejecuciones"
 OPEN_NO_FILE_ERROR_MESSAGE = "No se ha seleccionado un archivo válido"
 OPEN_NO_PERMISSION_ERROR_MESSAGE = "Debe cerrar el archivo Excel para poder modificarlo"
 OPEN_ERROR_TITLE = "¡ERROR!"
+SUCCESS_MESSAGE = "Ejecución añadida correctamente al LOG"
+SUCCES_TITLE = "LOG Actualizado"
 
 #Variables for reading and writing .txt and .xlsx documents
 TXT_AS_CSV = 'txtAsCSV'
@@ -54,6 +56,8 @@ def writeExcel (txt_log):
         for row in txt_log:
             ws.append(row)
         wb.save(excel_file_path)
+        ctypes.windll.user32.MessageBoxW(0, SUCCESS_MESSAGE, SUCCES_TITLE, 0)
+
     except FileNotFoundError:
         ctypes.windll.user32.MessageBoxW(0, OPEN_NO_FILE_ERROR_MESSAGE, OPEN_ERROR_TITLE, 0)
     except PermissionError:
