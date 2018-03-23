@@ -1,0 +1,4 @@
+start end token
+0 3.16 Pensar
+3.16 4.04 Patear
+4.08 29.96 celebrar
