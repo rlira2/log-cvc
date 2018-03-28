@@ -46,10 +46,7 @@ def loadText():
 def writeExcel (txt_log):
     ctypes.windll.user32.MessageBoxW(0, OPEN_XLSX_MESSAGE, OPEN_XLSX_TITLE, 0)
     excel_file_path = filedialog.askopenfilename(filetypes=[("Excel files", "*.xlsx")]) 
-    if excel_file_path:
-        pass
-    else:
-        pass
+
     try:        
         wb = load_workbook(excel_file_path)
         ws = wb[LOG_WORKSHEET]

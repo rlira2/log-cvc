@@ -1,3 +1,14 @@
+import csv
+import openpyxl
+import ctypes
+import tkinter as tk
+from tkinter import filedialog
+
+
+#To use openFile dialog
+root = tk.Tk()
+root.withdraw()
+
 process_steps = [
     ("Preparation of operator and patient","Prepararción Operador y Paciente"),
     ("Preparation of ultrasound equipment","Preparación Equipo Ultrasonido"),
@@ -93,3 +104,18 @@ for english_activity in activities_english:
 print ("\nLAS ACTIVIDADES DEL PROCESO SON:")
 for spanish_activity in activities_spanish:
     print (spanish_activity[0])
+
+def createLog(cells):
+    log = ["ID","SART","END", "ACTIVITY", "STEP"]
+
+def readExcel ():
+    excel_file_path = filedialog.askopenfilename(filetypes=[("Excel files", "*.xlsx")])     
+    wb = openpyxl.load_workbook(excel_file_path)
+    ws = wb["Residente1"]
+    cells = ws[ws.dimensions]
+    for cell in cells:
+        print(cell[4].value)
+    createLog(cells)
+    #wb.save(excel_file_path)
+
+readExcel()
